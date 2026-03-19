@@ -4,35 +4,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import com.universidad.taskmanager.ui.theme.TaskManagerTheme
+import com.universidad.taskmanager.ui.MainActivity
 
-class MainActivity : ComponentActivity() {
+// Esta clase ahora solo redirige a la verdadera MainActivity en el paquete UI para cumplir con la estructura del profesor
+class LauncherActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            TaskManagerTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "TaskManager",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }
+        // Redirigir a la MainActivity real
+        val intent = android.content.Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
 }

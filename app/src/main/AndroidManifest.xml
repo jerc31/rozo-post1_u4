@@ -8,8 +8,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TaskManager">
+
+        <!-- MainActivity movida al paquete UI -->
         <activity
-            android:name=".MainActivity"
+            android:name="com.universidad.taskmanager.ui.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.TaskManager">
