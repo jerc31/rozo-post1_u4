@@ -31,6 +31,7 @@ class MainActivity : ComponentActivity() {
         val repository = TaskRepository(database.taskDao())
         
         val viewModelFactory = object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return TaskViewModel(repository) as T
             }
@@ -120,7 +121,6 @@ fun TaskItem(task: TaskEntity, onToggle: () -> Unit, onDelete: () -> Unit) {
             Column(modifier = Modifier.weight(1f).padding(start = 8.dp)) {
                 Text(text = task.title, style = MaterialTheme.typography.titleMedium)
                 Text(text = task.description, style = MaterialTheme.typography.bodySmall)
-                // Mostrar prioridad si existe (V2)
                 Text(text = "Prioridad: ${task.priority}", style = MaterialTheme.typography.labelSmall)
             }
             IconButton(onClick = onDelete) {
